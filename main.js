@@ -3,11 +3,11 @@ var CONNECTION_IP = '95.154.250.152',
 	CONNECTION_PORT = 3000,
 	CONNECTION_URL = "http://"+ CONNECTION_IP + ":" + CONNECTION_PORT;
 
-var PATH = [{x:250,y:800},{x:250,y:700},{x:250,y:600},{x:250,y:450},{x:400,y:150},{x:0,y:0,runway:true}, {x:150,y:800},{x:750,y:700},{x:750,y:600},{x:750,y:450},{x:600,y:250},{x:0,y:0, runway:true}];
+var PATH = [{x:200,y:800},{x:200,y:700},{x:250,y:600},{x:200,y:450},{x:200,y:150},{x:0,y:0,runway:true}, {x:150,y:800},{x:750,y:700},{x:750,y:600},{x:750,y:450},{x:600,y:250},{x:0,y:0, runway:true}];
 
 var init = false;
 
-var TOLERANCE = 100;
+var TOLERANCE = 10;
 
 var RUNWAY_X, RUNWAY_Y;
 
@@ -145,13 +145,13 @@ findWaypoint = function (position, waypoint) {
 nX = function (x) {return x + X_OFFSET;}
 nY = function (y) {return y + Y_OFFSET;}
 
-// request(CONNECTION_URL +"/new-session", function (error, response, body) {
-  // if (!error && response.statusCode == 200) {
+request(CONNECTION_URL +"/new-session", function (error, response, body) {
+  if (!error && response.statusCode == 200) {
 	
-  	// var token = JSON.parse(body).token;
-  	var token = "72cb068998ec"
+  	var token = JSON.parse(body).token;
+  	// var token = "c730aca908c0"
 	spawn('open', [CONNECTION_URL + "/view?token=" +token]);
    	
    	directPlanes(token);
-  // }
-// });
+  }
+});
