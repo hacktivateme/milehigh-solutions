@@ -3,7 +3,7 @@ var CONNECTION_IP = '95.154.250.152',
 	CONNECTION_PORT = 3000,
 	CONNECTION_URL = "http://"+ CONNECTION_IP + ":" + CONNECTION_PORT;
 
-var PATH = [{x:200,y:800},{x:200,y:700},{x:250,y:600},{x:200,y:450},{x:200,y:150},{x:0,y:0,runway:true}, {x:150,y:800},{x:750,y:700},{x:750,y:600},{x:750,y:450},{x:600,y:250},{x:0,y:0, runway:true}];
+var PATH = [{x:200,y:800},{x:200,y:600},{x:200,y:450},{x:200,y:150},{x:500,y:200},{x:0,y:0,runway:true},{x:550,y:800},{x:750,y:700},{x:750,y:600},{x:750,y:450},{x:600,y:200},{x:0,y:0, runway:true},{x:550,y:800}];
 
 var init = false;
 
@@ -27,6 +27,10 @@ directPlanes = function(token) {
 
 	  	  		RUNWAY_X = runway.x;
 	  	  		RUNWAY_Y = runway.y;
+
+	  	  		console.log("RWX: "+ RUNWAY_X);
+	  	  		console.log("RWY: "+ RUNWAY_Y);
+
 
 	  	  		var offset_x = body.boundary.min.x;
 	  	  		var offset_y = body.boundary.min.y;
@@ -77,9 +81,9 @@ wayfind = function (position, waypoint) {
 		return newWaypoint(position);
 	}
 
-	if (waypoint.x === RUNWAY_X && waypoint.y === RUNWAY_Y) {
-		return waypoint;
-	}
+	// if (waypoint.x === RUNWAY_X && waypoint.y === RUNWAY_Y) {
+	// 	return waypoint;
+	// }
 
 	return findWaypoint(position, waypoint);
 
